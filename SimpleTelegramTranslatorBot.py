@@ -7,7 +7,7 @@ import time
 from urllib.error import URLError
 from yandex_translate import YandexTranslate
 
-translator = YandexTranslate('token')
+translator = YandexTranslate('yandex-token')
 def processIncomeMessages(bot, lastUpdateId):
     for update in bot.getUpdates(offset=lastUpdateId, timeout=10):
         chat_id = update.message.chat_id
@@ -34,7 +34,7 @@ def processIncomeMessages(bot, lastUpdateId):
 def main():
     logging.basicConfig(
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    bot = telegram.Bot('158878771:AAG7z17aYyLuW8AD4LID3ELF5sKtoJjdZhs')  # Telegram Bot Authorization Token
+    bot = telegram.Bot('telegram-token')  # Telegram Bot Authorization Token
 
     try:
         lastUpdateId = bot.getUpdates()[-1].update_id  # Get lastest update
