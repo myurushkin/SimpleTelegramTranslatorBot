@@ -7,6 +7,7 @@ import time
 from urllib.error import URLError
 from yandex_translate import YandexTranslate
 
+
 translator = YandexTranslate('yandex-token')
 def processIncomeMessages(bot, lastUpdateId):
     for update in bot.getUpdates(offset=lastUpdateId, timeout=10):
@@ -19,7 +20,7 @@ def processIncomeMessages(bot, lastUpdateId):
         if sourceLang == "en":
             response = "Your message is already in english!"
         else:
-            doc =translator.translate(message, "en")
+            doc = translator.translate(message, "en")
             if not "text" in doc:
                 response = "I couldn't translate your message :("
             else:
@@ -28,8 +29,8 @@ def processIncomeMessages(bot, lastUpdateId):
             # Reply to the message
             bot.sendMessage(chat_id=chat_id,
                             text=response)
-
     return lastUpdateId
+
 
 def main():
     logging.basicConfig(
@@ -56,7 +57,6 @@ def main():
         except URLError as e:
             # These are network problems on our end.
             time.sleep(1)
-
 
 
 if __name__ == '__main__':
